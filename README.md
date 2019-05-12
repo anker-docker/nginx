@@ -39,10 +39,7 @@ docker build -t m_nginx:v1 .
 3. 运行容器
 docker run \
 -d \
--p 8080:8080 \
--p 8081:8081 \
--p 8082:8082 \
--p 8083:8083 \
+-p 8080-8089:8080-8089 \
 -v /data/wwwroot:/usr/local/nginx/html \
 -v /data/nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf:ro \
 -v /data/nginx/conf:/usr/local/nginx/conf/conf.d \
