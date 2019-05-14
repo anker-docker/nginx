@@ -57,6 +57,21 @@ docker run \
 --name my_nginx m_nginx:v1 nginx -g "daemon off;"
 ```
 
+### 4.安装redis拓展
+```php
+1. 更新源
+apt-get update
+
+2. 安装gcc,autoconf,make
+apt-get -y install gcc autoconf make vim
+
+3. 安装redis拓展
+pecl install -o -f redis
+
+4. 在/opt/bitnami/php/etc/php.ini中添加拓展
+extension=redis.so 
+```
+
 
 
 
