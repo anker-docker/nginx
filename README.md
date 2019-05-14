@@ -22,6 +22,7 @@ service mysqld restart
 ```php
 1. 拉取镜像
 docker pull bitnami/php-fpm:7.0
+docker pull bitnami/php-fpm:5.6.40
 2. 运行容器
 docker run \
 -d \
@@ -29,6 +30,13 @@ docker run \
 -v /data/wwwroot:/usr/local/nginx/html \
 --link m_mysql:mysql \
 --name m_phpfpm bitnami/php-fpm:7.0
+
+docker run \
+-d \
+-p 9001:9000 \
+-v /data/wwwroot:/usr/local/nginx/html \
+--link m_mysql:mysql \
+--name m_phpfpm_5.6 bitnami/php-fpm:5.6.40
 ```
 ### 3.部署nginx
 ```php
@@ -45,6 +53,7 @@ docker run \
 -v /data/nginx/conf:/usr/local/nginx/conf/conf.d \
 -v /data/wwwlogs:/usr/local/nginx/logs \
 --link m_phpfpm:phpfpm \
+--link m_phpfpm_5.6:phpfpm5.6 \
 --name my_nginx m_nginx:v1 nginx -g "daemon off;"
 ```
 
